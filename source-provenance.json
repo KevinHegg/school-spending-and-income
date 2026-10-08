@@ -1,0 +1,173 @@
+{
+  "title": "Source provenance for school spending and household income",
+  "schema_version": "1.0",
+  "snapshot_date": "2026-10-08",
+  "scope": "Provenance for the approved map snapshot and downloadable district values. Original source files are linked rather than redistributed here.",
+  "finance": {
+    "title": "School district finance, fiscal year 2024",
+    "agency": "U.S. Census Bureau",
+    "survey": "2024 Annual Survey of School System Finances (F-33)",
+    "release_date": "2026-05-07",
+    "retrieved_date": "2026-10-08",
+    "financial_year": 2024,
+    "typical_fiscal_period": "2023-07-01 through 2024-06-30",
+    "fiscal_period_exceptions": {
+      "Alabama and District of Columbia": "2023-10-01 through 2024-09-30",
+      "Nebraska, Texas and Washington": "2023-09-01 through 2024-08-31"
+    },
+    "money_basis": "Nominal/current dollars; not adjusted for inflation or geographic cost-of-living differences.",
+    "published_national_current_spending_per_pupil": 17619,
+    "national_value_source": "https://www.census.gov/newsroom/press-releases/2026/school-system-finances.html",
+    "source_page": "https://www.census.gov/data/tables/2024/econ/school-finances/secondary-education-finance.html",
+    "technical_documentation_url": "https://www2.census.gov/programs-surveys/school-finances/technical-documentation/complete-technical-documentation/2024/school24doc.docx",
+    "source_files": [
+      {
+        "filename": "elsec24t.xlsx",
+        "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.xlsx",
+        "bytes": 6313790,
+        "sha256": "af178bc61c85b579ed54745e9a039ccb563e60a02f763d6d884bf14935b9d4cf"
+      },
+      {
+        "filename": "elsec24t.txt",
+        "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.txt",
+        "bytes": 5113780,
+        "sha256": "5cc1ef4df714fa5ff85b95cfec28931ee0829c8e6036e592c2470bd6e6d9c65a"
+      },
+      {
+        "filename": "elsec24.xlsx",
+        "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.xlsx",
+        "bytes": 12639997,
+        "sha256": "7e69f35a44c1d03c9b5a9127a074bd4feed705e7a950bf028305135241cfd758"
+      },
+      {
+        "filename": "elsec24.txt",
+        "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.txt",
+        "bytes": 8641482,
+        "sha256": "89757cb6955ccce1224acefcec46fd3e7e02c8f5d5bdae7127516e0299baf211"
+      },
+      {
+        "filename": "elsec24f.txt",
+        "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.txt",
+        "bytes": 10382446,
+        "sha256": "f08738e732d50f95004027d9bfacc20b64bfec1f3c524dcd7c824c5e1341c64f"
+      },
+      {
+        "filename": "school24doc.docx",
+        "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/school24doc.docx",
+        "bytes": 99693,
+        "sha256": "da64de5ffa2d83dd884c84c457721b34322a919fed0b3151126eb652ecb6833e"
+      }
+    ],
+    "charter_scope": "Only charter schools operated by governmental bodies are in Census government-finance scope, often within the sponsoring district. Nongovernmental charter operators are outside scope; sponsoring district payments to them may be included. No charter/non-charter flag is supplied in these files.",
+    "spending_scope": "Current elementary-secondary spending excludes capital outlay, debt service, nonelementary-secondary programs, and spending for students outside the fall-membership denominator. State payments on behalf of school systems may be estimated or only available at state level; consult state notes.",
+    "geography_note": "Finance records are agencies/systems. Join exact seven-digit NCESID to Census district GEOID/LEAID; do not geocode a district to its associated county or name-match nongeographic entities. Preserve unmatched units separately.",
+    "comparison_note": "A per-pupil spending / median household income ratio is a comparison of two differently based quantities, not the share of household income paid in school taxes. Local revenue per pupil also reflects tax base, fees, fiscal organization and state funding rules, not local willingness alone.",
+    "income_period_note": "If joined to ACS 2020-2024 household median income, financial FY2024 values are being compared with a pooled five-year household-income estimate. Capped income bounds must not be treated as exact values in correlations.",
+    "flag_legend": {
+      "R": "As reported by the state",
+      "S": "Value from alternative source",
+      "A": "Adjustment made by analyst",
+      "I": "Imputed value",
+      "M": "Missing value",
+      "N": "Not applicable; a value was not expected"
+    },
+    "workbook_vs_text_note": "Normalized finance values use the official XLSX workbooks. All numeric values in the individual-unit workbook and TXT export were compared with no substantive differences after ignoring XML floating-point serialization noise below 0.0000001.",
+    "source_validation": "Individual-unit XLSX and TXT numeric values were compared with no substantive differences after ignoring serialization noise below 0.0000001. All source-file hashes in this provenance were checked against the downloaded originals.",
+    "spending_preparation": "Use the published PPCSTOT (already USD per pupil) for regular school systems (SCHLEV 01, 02, 03), an exact district-ID match, positive enrollment and positive spending. Other spending entries are null in this map snapshot.",
+    "local_revenue_preparation": "Convert TLOCREV from thousands of dollars to dollars, divide by positive enrollment, then round to whole dollars for this map snapshot. PCTLTOT is used as the published percentage on a 0–100 scale.",
+    "flags_note": "This publication is an analysis snapshot rather than the complete source flag matrix. Published spending has no direct item flag; ENROLL/V33 and other source items have separate flags in elsec24f.txt. Consult those originals when interpreting unusual records."
+  },
+  "income": {
+    "dataset": "U.S. Census Bureau, American Community Survey 2020–2024 5-year estimates",
+    "table": "B19013",
+    "title": "Median Household Income in the Past 12 Months (in 2024 Inflation-Adjusted Dollars)",
+    "universe": "All households residing within each school district geographic boundary",
+    "definition_note": "Income describes all resident households, not only families with enrolled public-school children.",
+    "period": "2020–2024",
+    "dollar_year": 2024,
+    "margin_of_error_confidence_percent": 90,
+    "geography_vintage": "2024; school district boundaries apply to school year 2023–2024",
+    "coverage": "50 states and DC; geographic school districts at summary levels 950, 960, and 970",
+    "excluded_geographies": "75 not-defined geography rows ending in 99999 or 99997; Puerto Rico and territories",
+    "school_district_count": 13304,
+    "district_count_by_type": {
+      "elementary": 1952,
+      "secondary": 481,
+      "unified": 10871
+    },
+    "income_available": 13228,
+    "income_unavailable": 76,
+    "open_ended_income": {
+      "+": 43,
+      "-": 1
+    },
+    "bounded_income_note": "Census source sentinels 250001 and 2499 were mapped to displayed bounds 250000 and 2500. income_bound + denotes $250,000 or more; - denotes $2,500 or less. Bounds are not exact medians and should not be used as exact observations in correlations.",
+    "join_note": "District dictionary keys are 7-digit geographic identifiers (state FIPS + SDLEA). Join exactly to F-33 NCESID. NCES documents that pseudo-district GEOID may differ from LEAID; unmatched IDs must remain unmatched without a documented crosswalk.",
+    "national_and_state_note": "National and state medians are published Census estimates; they are not averages of district medians.",
+    "source_url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+    "table_url": "https://data.census.gov/table/ACSDT5Y2024.B19013",
+    "summary_file_documentation_url": "https://www.census.gov/programs-surveys/acs/data/summary-file.2024.html",
+    "boundary_documentation_url": "https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries",
+    "join_documentation_url": "https://nces.ed.gov/programs/edge/docs/EDGE_SDBOUNDARIES_COMPOSITE_FILEDOC.pdf",
+    "annotations_documentation_url": "https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html",
+    "raw_file_sha256": "b25a176b0e6c339b6f3a2a0d3d8446bf06f5f080b4395993ec9a8313efb1c229",
+    "raw_file_bytes": 17917916,
+    "raw_file_rows": 543579,
+    "retrieved": "2026-10-08",
+    "national_median_household_income": 80734,
+    "national_income_moe_90": 166,
+    "raw_file_name": "acsdt5y2024-b19013.dat"
+  },
+  "geometry": {
+    "title": "2024 public school district geography for spending and income comparison",
+    "geographic_source": "U.S. Census Bureau 2024 Cartographic Boundary Files, 1:500,000",
+    "source_page": "https://www.census.gov/geographies/mapping-files/2024/geo/carto-boundary-file.html",
+    "source_geometry_vintage": "2024; represents school year 2023–2024 and matches ACS 2020–2024",
+    "crs": "NAD83 geographic coordinates (EPSG:4269); longitude/latitude",
+    "nces_geography_documentation": "https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries",
+    "district_types": {
+      "unified": 10872,
+      "elementary": 1952,
+      "secondary": 481
+    },
+    "total_districts": 13305,
+    "excluded": "Puerto Rico and other territories; School District Not Defined polygons",
+    "income_geometry_match": "All 13,304 real ACS school district IDs matched a geographic feature. The extra real feature, 3631800 Wyandanch Union Free School District, NY, has no B19013 row and must retain missing income.",
+    "layer_display_note": "Unified + elementary and unified + secondary are distinct grade-coverage views. Do not paint elementary and secondary layers simultaneously or aggregate their medians.",
+    "district_id": "Seven-digit GEOID string, usually NCES LEAID; join exactly to F-33 NCESID. Pseudo-districts may have different agency IDs; unmatched IDs stay unmatched.",
+    "simplification": "Weighted Visvalingam spherical, retaining 1% of removable vertices plus topology junctions; keep-shapes enabled. This is display geometry, not an analytic boundary product.",
+    "simplification_source_vertices": 1259727,
+    "simplification_removed_vertices": 1216739,
+    "cartographic_notes": "Tiny islands and boundary details were generalized. Mapshaper reported 9 segment intersections it could not repair at this simplification. No district feature was discarded. For source boundaries, use the linked Census files.",
+    "quantization": "Global 1,000,000-coordinate transform; most points rounded to a 10-unit grid. Thirty-two small district features and 267 source points protected at finer precision to prevent disappearance or distortion.",
+    "ring_winding": "Exteriors clockwise, holes counterclockwise for D3; spherical areas checked.",
+    "validation": {
+      "districts_lost": 0,
+      "hemisphere_inverted_features": 0,
+      "positive_finite_area_features": 13305,
+      "binary_roundtrip": "Exact equality for all arcs, IDs, layers, and geometry objects"
+    },
+    "sources": [
+      {
+        "url": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_unsd_500k.zip",
+        "file": "cb_2024_us_unsd_500k.zip",
+        "bytes": 24523681,
+        "sha256": "b17771a02b8f84a5e53705cd32b9917596946b59510b1daaee61d75ecb3e0785"
+      },
+      {
+        "url": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_elsd_500k.zip",
+        "file": "cb_2024_us_elsd_500k.zip",
+        "bytes": 2109197,
+        "sha256": "809ce368525846ed0c95983c39c9a72091e04cbcee6721e338243735579b9619"
+      },
+      {
+        "url": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_scsd_500k.zip",
+        "file": "cb_2024_us_scsd_500k.zip",
+        "bytes": 1028156,
+        "sha256": "75ed9249ff905a1191535ca4db580851add1a357bcfe4343cf702fb3834c549a"
+      }
+    ],
+    "retrieved_date": "2026-10-08",
+    "published_geometry_note": "The finalized simplified display geometry is embedded in the interactive map. Use the original linked Census boundaries for spatial analysis."
+  }
+}

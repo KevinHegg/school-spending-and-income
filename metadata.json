@@ -1,0 +1,114 @@
+{
+  "title": "School spending and household income by district",
+  "schema_version": "1.0",
+  "snapshot_date": "2026-10-08",
+  "geography": "50 U.S. states and the District of Columbia; 2024 school district boundaries",
+  "counts": {
+    "geographic_districts": 13305,
+    "states_and_dc": 51,
+    "matched_districts": 12960,
+    "unmatched_or_incomplete_districts": 345,
+    "default_view_matched_districts": 12577,
+    "districts_with_income": 13228,
+    "districts_without_income": 77,
+    "matched_with_exact_income_estimate": 12916,
+    "matched_with_bounded_income": 44,
+    "upper_bounded_income": 43,
+    "lower_bounded_income": 1,
+    "by_type": {
+      "unified": {
+        "districts": 10872,
+        "matched": 10692
+      },
+      "elementary": {
+        "districts": 1952,
+        "matched": 1885
+      },
+      "secondary": {
+        "districts": 481,
+        "matched": 383
+      }
+    }
+  },
+  "benchmarks": {
+    "median_household_income": {
+      "value": 80734,
+      "unit": "2024 inflation-adjusted USD per household",
+      "period": "ACS 2020–2024 five-year estimate",
+      "scope": "Published national median for all households; not an average of district medians"
+    },
+    "spending_per_student": {
+      "value": 17619,
+      "unit": "USD per enrolled student",
+      "period": "Fiscal year 2024",
+      "scope": "Published national current elementary-secondary spending per pupil"
+    }
+  },
+  "data_dictionary": "data-dictionary.md",
+  "source_provenance": "source-provenance.json",
+  "source_urls": [
+    "https://www.census.gov/data/tables/2024/econ/school-finances/secondary-education-finance.html",
+    "https://data.census.gov/table/ACSDT5Y2024.B19013",
+    "https://www.census.gov/geographies/mapping-files/2024/geo/carto-boundary-file.html"
+  ],
+  "missing_values": "JSON null; empty CSV fields. Numeric zero is retained as zero.",
+  "income_bounds": "+ means $250,000 or more; - means $2,500 or less. These are bounds, not exact medians.",
+  "record_fields": [
+    "district_id",
+    "state_fips",
+    "state",
+    "state_abbr",
+    "district",
+    "district_type",
+    "median_household_income",
+    "income_moe_90",
+    "income_bound",
+    "spending_per_student",
+    "enrollment",
+    "local_revenue_per_student",
+    "local_revenue_share_pct",
+    "matched"
+  ],
+  "identifier_note": "district_id is the seven-character Census district GEOID used for an exact match to finance NCESID. An unmatched geography is not evidence of an agency-ID match.",
+  "reproduction": {
+    "command": "python3 scripts/export-data.py",
+    "check_command": "python3 scripts/export-data.py --check",
+    "requirements": "Python 3.9 or newer; standard library only",
+    "scope": "Reproduce downloads from the approved checked-in map snapshot. Original Census ingestion and the geometry simplification are not rerun by this command.",
+    "input": {
+      "path": "src/education-values.json",
+      "bytes": 1171100,
+      "sha256": "f6e087d267212a8f381206928c91ff490bf40aed1386bfb68578c22997511e95"
+    }
+  },
+  "file_checksums": [
+    {
+      "path": "data/districts.csv",
+      "bytes": 1360670,
+      "sha256": "98ab39f2f9993fa3cc8dae2f4270fe229ce23feb4a83b4921fa353ef44008726"
+    },
+    {
+      "path": "data/districts.json",
+      "bytes": 5118998,
+      "sha256": "8b5cfca990c2f6ab335dce6fcbbeb077b8d4d47bc644e74596b66a57b22cab90"
+    },
+    {
+      "path": "data/source-provenance.json",
+      "bytes": 12538,
+      "sha256": "36b427b46083f08e321fc50a191e04e4648c7f040c535e97569fd3ec0e626a1e"
+    },
+    {
+      "path": "data/data-dictionary.md",
+      "bytes": 7794,
+      "sha256": "86f0aa52ab201d75d1e0bd21417d5e5e0c4fee842357c92ae920f8947373dd18"
+    }
+  ],
+  "display_notes": [
+    "The default layer contains unified and elementary districts. The alternative contains unified and secondary districts. Elementary and secondary geographies can overlap.",
+    "The map uses the same national income and spending benchmarks in every state. The scatterplot uses a linear income axis and a logarithmic spending axis; each district is one unweighted point.",
+    "Income describes all resident households. Spending is current elementary-secondary expenditure from federal, state and local funds per pupil, not the locality's own spending or a household tax rate.",
+    "Local revenue per student is rounded to whole dollars in this map snapshot. Local share is the source's published percentage on a 0–100 scale.",
+    "The snapshot retains unusually low and high published spending values. Consult source documentation and flags when investigating a district.",
+    "Dollar values are not adjusted for geographic costs. The five-year income estimate and one-year finance measure describe different time windows."
+  ]
+}

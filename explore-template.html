@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive school district map and scatterplot: FY 2024 public school spending per student and 2020–2024 median household income.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <title>Explore districts · School spending &amp; income</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/site.js"></script>
+</head>
+<body>
+  <main class="site-width explore-only">
+    <nav class="explore-nav" aria-label="Chart navigation"><a href="./">About this comparison &amp; sources</a><a href="assets/education-spending-and-income.png" download>Download image</a></nav>
+    <!-- INTERACTIVE_CHART -->
+    <div id="chart-fallback" class="fallback" hidden><p>The interactive charts could not load in this browser. <a href="assets/education-spending-and-income.png">View the national image</a> or <a href="data/districts.csv">download the data</a>.</p></div>
+    <noscript><style>#education-income-map { display: none; }</style><div class="fallback"><p>JavaScript is needed for district selection. <a href="data/districts.csv">Download the data</a> or use the national comparison below.</p><a href="assets/education-spending-and-income.png"><img src="assets/education-spending-and-income.png" width="3800" height="3540" alt="National school district map and scatterplot with benchmarks of $80,734 household income and $17,619 operating spending per student."></a></div></noscript>
+    <p class="chart-guide" style="margin-top:24px">Choose a state, then select a district on either chart or use the district menu. Each mark is one district; colors use national benchmarks. <a href="./#understand">Read the interpretation and limitations</a>.</p>
+    <p class="vintage">Sources: <a href="https://www.census.gov/data/tables/2024/econ/school-finances/secondary-education-finance.html">Census FY 2024 school finances</a> · <a href="https://data.census.gov/table/ACSDT5Y2024.B19013">ACS 2020–2024 B19013</a> · <a href="https://www.census.gov/geographies/mapping-files/2024/geo/carto-boundary-file.html">2024 Census boundaries</a></p>
+  </main>
+</body>
+</html>

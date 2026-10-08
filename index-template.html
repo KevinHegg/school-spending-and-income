@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore public school operating spending per student alongside district median household income in all 50 states and D.C. An interactive map and scatterplot with Census sources and downloadable data.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <title>School spending &amp; district income</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#explore">Skip to the interactive charts</a>
+  <header class="site-header site-width">
+    <a class="site-brand" href="./">School spending &amp; income</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#explore">Explore</a>
+      <a href="#understand">How to read it</a>
+      <a href="#sources">Sources</a>
+      <a href="#downloads">Downloads</a>
+    </nav>
+  </header>
+  <main class="site-width">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Public education · United States</p>
+      <h1 id="page-title">School spending &amp;<br>district income</h1>
+      <p class="dek">How do the resources available to public schools compare with the incomes of people who live in their districts?</p>
+      <p class="vintage">FY 2024 school finances · 2020–2024 household income · 50 states + D.C.</p>
+      <div class="hero-actions">
+        <a class="action-link" href="#explore">Explore districts</a>
+        <a href="#sources">Read the sources</a>
+        <a href="https://github.com/KevinHegg/school-spending-and-income">View the project on GitHub</a>
+      </div>
+    </section>
+
+    <section id="explore" class="chart-section" aria-label="Interactive school district map and scatterplot">
+      <p class="chart-guide">Choose a state to see local districts. Select a district on the map or scatterplot to compare its income, spending, enrollment, and local funding. The district menu also supports keyboard selection after you choose a state.</p>
+      <!-- INTERACTIVE_CHART -->
+      <div id="chart-fallback" class="fallback" hidden>
+        <p>The interactive charts could not load in this browser.</p>
+        <p><a href="assets/education-spending-and-income.png">View the national map and scatterplot as an image</a>, or <a href="data/districts.csv">download the district data</a>.</p>
+      </div>
+      <noscript><style>#education-income-map { display: none; }</style>
+        <div class="fallback">
+          <p>JavaScript is needed for district selection. The national comparison and downloadable data remain available.</p>
+          <a href="assets/education-spending-and-income.png"><img src="assets/education-spending-and-income.png" width="3800" height="3540" alt="National map and scatterplot of school district operating spending per student versus median household income. The reference lines are $80,734 income and $17,619 spending per student."></a>
+        </div>
+      </noscript>
+      <p class="chart-link-row"><a href="explore.html">Open the charts on their own</a><a href="assets/education-spending-and-income.png" download>Download the high-resolution image</a></p>
+    </section>
+
+    <section id="understand" class="explanation-section" aria-labelledby="understand-title">
+      <h2 id="understand-title">How to read<br>the comparison</h2>
+      <div>
+        <h3>The map shows where; the scatterplot shows the relationship.</h3>
+        <p>Each map area represents a school district. Each scatterplot mark represents one district in the selected state and district layer. Moving right means higher median household income. Moving up means higher operating spending per student. The spending axis is logarithmic: equal vertical distances represent equal proportional changes. Every district has one mark, regardless of enrollment.</p>
+        <h3>Colors use the same national reference points everywhere.</h3>
+        <p>The income benchmark is the U.S. median household income of <strong>$80,734</strong> from the 2020–2024 American Community Survey. The spending benchmark is the published FY 2024 national current spending figure of <strong>$17,619 per student</strong>. A district at or above a benchmark is on the “higher” side for that measure. These references stay fixed when you change states. <a class="source-ref" href="#sources">[Sources 1–2]</a></p>
+        <p>Blue areas combine lower income with higher spending; pink areas combine higher income with lower spending. Purple means both are higher; pale purple means both are lower. “Higher” and “lower” describe a comparison with these benchmarks, not a judgment about schools.</p>
+        <h3>District boundaries can overlap.</h3>
+        <p>Elementary and secondary districts may cover the same residents. The default layer combines unified districts with elementary districts; a separate option combines unified districts with secondary districts. This keeps both overlapping layers from being painted at once. Unified districts can also be viewed alone. <a class="source-ref" href="#sources">[Source 3]</a></p>
+      </div>
+    </section>
+
+    <section id="measures" class="explanation-section" aria-labelledby="measures-title">
+      <h2 id="measures-title">What the two<br>measures mean</h2>
+      <div>
+        <h3>School resources: current operating spending per student</h3>
+        <p>This is district spending on current public elementary and secondary school operations, using the Census Bureau’s published per-pupil measure. It includes resources funded by federal, state, and local sources. Capital spending, such as school construction, and debt service are outside this measure. It is not a measure of how much local residents alone contribute. <a class="source-ref" href="#sources">[Source 1]</a></p>
+        <h3>Resident income: median household income</h3>
+        <p>This is the median income of all households living within a district’s boundaries, including households with no children in public schools. It is a five-year survey estimate expressed in 2024 inflation-adjusted dollars, not a single-year income census or the income of the district’s students. <a class="source-ref" href="#sources">[Source 2]</a></p>
+        <h3>Local funding: context for a selected district</h3>
+        <p>The selection detail also reports local-source revenue per student and the local share of total revenue. These are revenue measures, separate from operating spending. Local-source revenue can include taxes, parent-government contributions, tuition and other receipts; it does not by itself measure a resident’s tax burden or a community’s willingness to fund schools. <a class="source-ref" href="#sources">[Source 1]</a></p>
+      </div>
+    </section>
+
+    <section id="limitations" class="explanation-section" aria-labelledby="limitations-title">
+      <h2 id="limitations-title">Read the differences<br>with care</h2>
+      <div>
+        <ul>
+          <li><strong>Income estimates have uncertainty.</strong> The district detail shows the ACS 90% margin of error when available and notes when the income interval crosses the national benchmark. Map colors follow the point estimate; they are not statistical significance tests. Triangles identify income reported as an upper or lower bound, such as $250,000 or more. <a class="source-ref" href="#sources">[Source 2]</a></li>
+          <li><strong>Not every district has both measures.</strong> Hatched areas lack a usable matched value for this comparison. The project contains 13,305 geographic districts; 12,960 have positive spending and enrollment plus usable income across all district types. The default national layer includes 12,577 matched districts. See the <a href="data/metadata.json">dataset metadata</a> for coverage.</li>
+          <li><strong>Reported spending can be unusual.</strong> Small enrollment, tuition arrangements, and reporting practices can affect per-student figures. Very low published values are retained and flagged in the selection detail. Use the <a href="https://github.com/KevinHegg/school-spending-and-income/blob/main/METHODOLOGY.md">methodology</a> and original finance records before drawing conclusions about an outlier.</li>
+          <li><strong>The dollars are not adjusted for geographic cost differences.</strong> A dollar may buy different amounts of staff time and services in different places. Grade spans and student needs also differ. The display does not adjust for those differences. <a class="source-ref" href="#sources">[Source 1]</a></li>
+          <li><strong>Association is a starting point for inquiry.</strong> These charts do not establish that income causes spending differences, measure school quality, or rank communities by generosity. State funding rules and student needs are useful next questions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sources" class="explanation-section" aria-labelledby="sources-title">
+      <h2 id="sources-title">Sources &amp;<br>data vintages</h2>
+      <div>
+        <ol class="source-list">
+          <li>
+            <a class="source-title" href="https://www.census.gov/data/tables/2024/econ/school-finances/secondary-education-finance.html">U.S. Census Bureau — FY 2024 Annual Survey of School System Finances</a>
+            <p>Current spending per pupil, enrollment, and local-source revenue. The FY 2024 results were released May 7, 2026. The published national current spending benchmark is $17,619 per student.</p>
+            <div class="source-links"><a href="https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.xlsx">District finance workbook</a><a href="https://www2.census.gov/programs-surveys/school-finances/technical-documentation/complete-technical-documentation/2024/school24doc.docx">Technical documentation</a><a href="https://www.census.gov/newsroom/press-releases/2026/school-system-finances.html">National release</a></div>
+          </li>
+          <li>
+            <a class="source-title" href="https://data.census.gov/table/ACSDT5Y2024.B19013">U.S. Census Bureau — 2020–2024 ACS five-year estimates, table B19013</a>
+            <p>Median household income in the past 12 months, in 2024 inflation-adjusted dollars, and its 90% margin of error. The national estimate used here is $80,734. District income and geometry were matched to finance records using district identifiers.</p>
+            <div class="source-links"><a href="https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat">B19013 source data</a><a href="https://api.census.gov/data/2024/acs/acs5/groups/B19013.html">Variable definitions</a><a href="https://www.census.gov/programs-surveys/acs/data/summary-file.html">Summary-file documentation</a></div>
+          </li>
+          <li>
+            <a class="source-title" href="https://www.census.gov/geographies/mapping-files/2024/geo/carto-boundary-file.html">U.S. Census Bureau — 2024 cartographic school district boundaries</a>
+            <p>Unified, elementary, and secondary school districts at 1:500,000 source scale, simplified further for display. These shapes support geographic exploration; they are not parcel-level attendance-zone determinations.</p>
+            <div class="source-links"><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_unsd_500k.zip">Unified districts</a><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_elsd_500k.zip">Elementary districts</a><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_scsd_500k.zip">Secondary districts</a><a href="https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries">NCES boundary context</a></div>
+          </li>
+        </ol>
+        <p class="document-links">For field definitions, matching rules, exclusions, source files, and cautions, read the <a href="https://github.com/KevinHegg/school-spending-and-income/blob/main/METHODOLOGY.md">methodology</a>, <a href="https://github.com/KevinHegg/school-spending-and-income/blob/main/SOURCES.md">source catalog</a>, and <a href="https://github.com/KevinHegg/school-spending-and-income/blob/main/data/data-dictionary.md">data dictionary</a>.</p>
+      </div>
+    </section>
+
+    <section id="downloads" class="explanation-section" aria-labelledby="downloads-title">
+      <h2 id="downloads-title">Take the data<br>with you</h2>
+      <div>
+        <ul class="download-list">
+          <li><a href="data/districts.csv" download>District data · CSV</a><span class="download-description">A flat table for spreadsheets and analysis. District identifiers should be imported as text to retain leading zeros.</span></li>
+          <li><a href="data/districts.json" download>District data · JSON</a><span class="download-description">The same public dataset in a structured format.</span></li>
+          <li><a href="assets/education-spending-and-income.png" download>National map and scatterplot · PNG</a><span class="download-description">A 3,800 × 3,540 pixel image of the default district layer, with reference values and source captions.</span></li>
+          <li><a href="data/metadata.json">Dataset metadata</a><span class="download-description">Coverage counts, definitions, and provenance for this published snapshot.</span></li>
+        </ul>
+        <p class="document-links"><a href="https://github.com/KevinHegg/school-spending-and-income">Browse the source code and documentation on GitHub</a>. This is a fixed data release; the page does not update automatically when new Census estimates appear.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer site-width">
+    <p>An independent visualization using public Census data.</p>
+    <p><a href="https://github.com/KevinHegg/school-spending-and-income/blob/main/THIRD_PARTY_NOTICES.md">Third-party notices</a> · <a href="#page-title">Back to top</a></p>
+  </footer>
+</body>
+</html>
